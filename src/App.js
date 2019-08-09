@@ -1,23 +1,21 @@
-import React from 'react';
-import './App.css';
-import Auth from './components/Auth/Auth'
-import Dashboard from './components/Dashboard/Dashboard'
-import Form from './components/Form/Form'
-import Nav from './components/Nav/Nav'
-import Post from './components/Post/Post'
+import "./App.css";
+import Nav from "./components/Nav/Nav";
+import { withRouter } from "react-router-dom";
+import routes from "./routes";
+import React, { Component } from "react";
+export class App extends Component {
+  render() {
+    const { location } = this.props;
+    console.log(location);
+    return (
+      <div className="App">
+        <header className="App-header" />
+        <div>{location.pathname === "/" ? <></> : <Nav />}</div>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-      <Nav />
-      <Auth />
-      <Form />
-      <Post />
-      <Dashboard />
-    </div>
-  );
+        {routes}
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);

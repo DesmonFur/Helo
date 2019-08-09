@@ -4,7 +4,7 @@ export class Form extends Component {
     render() {
         return (
             <div>
-                Form
+                <h1>Form</h1>
             </div>
         )
     }
