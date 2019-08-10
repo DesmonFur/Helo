@@ -4,23 +4,31 @@ const initalState = {
   userId: 0
 };
 
-const SET_USER = 'SET_USER'
 
-export  function setUser(user) {
+//EVEN IF I MAKE A DIFFRENTIN ACTION 
+
+export const SET_USER = 'SET_USER'
+export  const  setUser = (user,img,id) => {
   return {
     type: SET_USER,
-    payload: user 
+    payload: {
+      user:user,
+      img:img,
+      id:id
+    }
   }
+
 }
 
 
 
 export default (state = initalState, action) => {
   const { type, payload } = action;
+
   switch (type) {
       case SET_USER:
-      const {username,profileImg,userId} = payload
-      return {...state, username,profileImg, userId} 
+        // const {username,profileImg,userId} = payload 
+      return { ...state, username:payload.user, profileImg:payload.img, id: payload.id}  
     default:
       return state;
   }

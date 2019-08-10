@@ -15,7 +15,7 @@ app.use(session({
     }
 }))
 
-
+app.get('/posts/:userid', ctrl.getAll)
 app.post('/auth/register', ctrl.register)
 app.post('/auth/login', ctrl.login)
 

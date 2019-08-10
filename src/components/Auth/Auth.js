@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import { connect } from 'react-redux';
 import {setUser} from '../../ducks/reducer'
 export class Auth extends Component {
@@ -13,18 +13,32 @@ export class Auth extends Component {
     }
     registerUser = () => {
         const {username, password} = this.state
-        axios.post('/auth/register', {username, password}).then(
-            res => {
-                console.log('registerd')
-            }
-        )
+        axios.post('/auth/register', {username, password}).then(res => {
+            this.setState({
+                username: res.data[0],
+                profileImg: res.data[0]
+              })
+            //   console.log(res.data[0].profile_pic)
+            //   this.props.setUser( res.data[0].profile_pic)
+              this.props.history.push('/dashboard')
+              console.log(this.props)
+              console.log(this.state)
+        }
+    )
     }
 
     login = () => {
         const {username, password} = this.state 
-        axios.post('/auth/login', {username,password}).then(
-            res => {
-                console.log(`loggged in user ${this.state.username}`)
+        axios.post('/auth/login', {username,password}).then(res => {
+                this.setState({
+                    username: res.data[0],
+                    profileImg: res.data[0]
+                  })
+                  console.log(res.data)
+                  this.props.setUser(res.data[0].username ,res.data[0].profile_pic,res.data[0].profile_pic)
+                  this.props.history.push('/dashboard')
+                  console.log(this.props)
+                  console.log(this.state)
             }
         )
     }
@@ -42,10 +56,10 @@ export class Auth extends Component {
             <div>
                 <input onChange={ (e) => this.handleChange(e)} type="text" name='username' placeholder='username'/>
                 <input onChange={(e) => this.handleChange(e)} type="password" name='password' placeholder='password'/>
-                <Link to='/dashboard'>
+                {/* <Link to='/dashboard'> */}
                 <button onClick={this.login}>Login</button>
                     <button onClick={this.registerUser}>Register</button>
-                </Link>
+                {/* </Link> */}
             </div>
         )
     }

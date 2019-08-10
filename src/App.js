@@ -6,11 +6,12 @@ import React, { Component } from "react";
 export class App extends Component {
   render() {
     const { location } = this.props;
-    console.log(location);
     return (
       <div className="App">
-        <header className="App-header" />
+        <header className="App-header">
         <div>{location.pathname === "/" ? <></> : <Nav />}</div>
+
+        </header>
 
         {routes}
       </div>

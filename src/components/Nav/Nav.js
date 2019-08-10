@@ -6,7 +6,7 @@ export class Nav extends Component {
     render() {
         console.log(this.props)
         return (
-            <div>
+            <div >
             <h3>navigation menu</h3>
                 <Link to='/dashboard'>
                     <button>Home</button>
