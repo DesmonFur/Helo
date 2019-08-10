@@ -14,7 +14,7 @@ export class Dashboard extends Component {
 }
 
 componentDidMount(){
-    axios.get(`/posts/:userid`).then(res => {
+    axios.get(`/posts`).then(res => {
         this.setState({
             posts: res.data
         })

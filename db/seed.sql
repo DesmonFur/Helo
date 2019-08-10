@@ -12,7 +12,7 @@ id SERIAL PRIMARY KEY,
 title VARCHAR(5000),
 img text,
 content text,
-author_id INTEGER REFERENCES users(id)
+author_id SERIAL REFERENCES users(id)
 );
 
 INSERT INTO users(username,password,profile_pic)
