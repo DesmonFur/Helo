@@ -15,13 +15,11 @@ export class Auth extends Component {
     const { username, password } = this.state;
     axios.post("/auth/register", { username, password }).then(res => {
       this.setState({
-        username: res.data[res.data.length - 1],
-        profileImg: res.data[res.data.length - 1]
-    });
-    // console.log(res.data[res.data.length - 1])
-    // console.log(res.data)
-    ;
-    this.props.setUser(res.data[res.data.length - 1].username, res.data[res.data.length - 1].profile_pic);
+        username: res.data[0],
+        profileImg: res.data[0]
+      });
+    //   console.log(res.data);
+      this.props.setUser(res.data[0].username, res.data[0].profile_pic, res.data[0].id);
       this.props.history.push("/dashboard");
     //   console.log(this.props);
     //   console.log(this.state);
@@ -36,7 +34,7 @@ export class Auth extends Component {
         profileImg: res.data[0]
       });
     //   console.log(res.data);
-      this.props.setUser(res.data[0].username, res.data[0].profile_pic);
+      this.props.setUser(res.data[0].username, res.data[0].profile_pic, res.data[0].id);
       this.props.history.push("/dashboard");
     //   console.log(this.props);
     //   console.log(this.state);

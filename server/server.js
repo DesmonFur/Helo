@@ -18,7 +18,7 @@ app.use(session({
 app.get('/posts/:userid', ctrl.getAll)
 app.post('/auth/register', ctrl.register)
 app.post('/auth/login', ctrl.login)
-
+app.post('/api/post/userid', ctrl.post)
 massive(CONNECTION_STRING).then(dbInstance =>{
     app.set('db', dbInstance)
     app.listen(PORT, () => console.log( `'DINGLEBERRY CLYDI RUNNNI ${PORT} FLIES`))

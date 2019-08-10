@@ -1,5 +1,4 @@
 
 INSERT INTO users (username,password)
-VALUES ($1, $2);
-
-SELECT * FROM users;
+VALUES ($1, $2)
+RETURNING *;

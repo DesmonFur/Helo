@@ -18,5 +18,9 @@ module.exports = {
     const user = await db.find_user([username, password]);
     res.status(200).send(user).catch(console.log('profile not found'))
     ;
+  },
+  post: async (req,res) => {
+    const db = req.app.get('db')
+    
   }
 };
