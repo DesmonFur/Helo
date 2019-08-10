@@ -1,4 +1,4 @@
-SELECT * FROM posts;
+-- SELECT * FROM posts;
 
 -- SELECT * FROM users u  
 -- JOIN posts p  ON p.id = u.id

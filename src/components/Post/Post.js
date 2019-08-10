@@ -6,13 +6,15 @@ export class Post extends Component {
         // console.log(this.props)
         return (
             <div>
-                <h3>
-                    {title}
-                    <img src={img} alt="post"/>
-                    {content}
-                    <img src={profile} alt="profile"/>
+                <h4>
+                     {title}  
+                <br />
                     {username}
-                </h3>
+                    <img src={profile} alt="profile"/>
+                </h4>
+                    {/* <img src={img} alt="post"/> */}
+                    {/* {content} */}
+                
             </div>
         )
     }
