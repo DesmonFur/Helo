@@ -6,7 +6,6 @@ import React, { Component } from "react";
 export class App extends Component {
   render() {
     const { location } = this.props;
-    console.log(this.props)
     return (
       <div className="App">
         <header className="App-header">

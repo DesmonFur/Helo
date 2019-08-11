@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Post from '../Post/Post'
 import axios from 'axios';
+import {connect} from 'react-redux'
 export class Dashboard extends Component {
     constructor(){
         super()
@@ -8,13 +9,13 @@ export class Dashboard extends Component {
             posts: [],
             search: '',
             userposts: true
-            
-
-    }
+}
 }
 
-componentDidMount(){
-    axios.get(`/posts`).then(res => {
+receivePosts = () => {
+    const {userId} = this.props
+    // console.log(this.props)
+    axios.get(`/api/posts/${userId}`).then(res => {
         this.setState({
             posts: res.data
         })
@@ -23,11 +24,12 @@ componentDidMount(){
 
     render() {
         const {posts} = this.state
+        console.log(this.props)
         return (
             <div>
                 <h1>Dashboard</h1>
                 <input type="text" placeholder='search' name='search'/>
-                <button>Search</button>
+                <button onClick={this.receivePosts}>Search</button>
                 <button>Reset</button>
                 <input type="checkbox" name='userposts' /> My posts
                 {posts.map(post => (
@@ -47,4 +49,9 @@ componentDidMount(){
     }
 }
 
-export default Dashboard
+function mapStateToProps(reduxState) {
+    const {userId} = reduxState 
+    return {userId}
+}
+
+export default connect(mapStateToProps)(Dashboard)
